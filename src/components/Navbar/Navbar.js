@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useLogout } from "../hooks/useLogout";
-import { useAuthContext } from "../hooks/useAuthContext";
-import templeLogo from "../assets/temple.svg";
+import { useLogout } from "../../hooks/useLogout";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import templeLogo from "../../assets/temple.svg";
 
 import "./Navbar.css";
 

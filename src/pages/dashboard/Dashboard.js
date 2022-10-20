@@ -1,7 +1,7 @@
 import "./Dashboard.css";
 import { useState } from "react";
 import { useCollection } from "../../hooks/useCollection";
-import ProjectList from "../../components/ProjectList";
+import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "./ProjectFilter";
 import { useAuthContext } from "../../hooks/useAuthContext";
 

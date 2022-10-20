@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Avatar from "../../components/Avatar";
+import Avatar from "../../components/Avatar/Avatar";
 import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";

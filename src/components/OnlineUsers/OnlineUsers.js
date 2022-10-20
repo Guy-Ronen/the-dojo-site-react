@@ -1,6 +1,6 @@
 import "./OnlineUsers.css";
-import Avatar from "../components/Avatar";
-import { useCollection } from "../hooks/useCollection";
+import Avatar from "../Avatar/Avatar";
+import { useCollection } from "../../hooks/useCollection";
 
 export default function OnlineUsers() {
   const { error, documents } = useCollection("users");
