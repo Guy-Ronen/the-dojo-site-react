@@ -13,7 +13,7 @@ export default function Navbar() {
       <ul>
         <li className="logo">
           <img src={templeLogo} alt="dojo-logo" />
-          <span>The Dojo</span>
+          <span>The Dojo with github actions</span>
         </li>
 
         {!user && (
