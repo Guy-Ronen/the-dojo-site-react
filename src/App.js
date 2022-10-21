@@ -11,9 +11,9 @@ import Create from "./pages/create/Create";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Project from "./pages/project/Project";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import OnlineUsers from "./components/OnlineUsers";
+import Navbar from "./components/Navbar/Navbar";
+import Sidebar from "./components/Sidebar/Sidebar";
+import OnlineUsers from "./components/OnlineUsers/OnlineUsers";
 
 function App() {
   const { user, authIsReady } = useAuthContext();

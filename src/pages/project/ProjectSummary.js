@@ -1,4 +1,4 @@
-import Avatar from "../../components/Avatar";
+import Avatar from "../../components/Avatar/Avatar";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useHistory } from "react-router-dom";
