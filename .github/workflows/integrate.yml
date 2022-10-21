@@ -36,6 +36,8 @@ jobs:
           node-version: 12
       - name: Install dependencies
         run: npm ci
+      - name: tests
+        uses: npm run test
       - name: Build dependencies
         run: npm run-script build
         
