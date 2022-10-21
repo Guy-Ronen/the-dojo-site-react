@@ -1,9 +1,6 @@
-name: Continous Integration
+name: Format and Test
 
-on:
-  pull_request:
-    branches: [ master ]
-
+on: [pull_request]
 jobs:
   prettier:
     name: Prettier format check
@@ -24,8 +21,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
-  build:
-    name: Build
+  tests:
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -38,6 +35,4 @@ jobs:
         run: npm ci
       - name: tests
         run: npm run test
-      - name: Build dependencies
-        run: npm run-script build
         
