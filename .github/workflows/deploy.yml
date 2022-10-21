@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 jobs:
   build:
-    - name: Build dependencies
+    name: Build dependencies
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -36,7 +36,7 @@ jobs:
         with:
           node-version: 16
       - name: Download artifact
-      - run:  actions/dowload-artifact@master
+        uses:  actions/download-artifact@master
         with:
           name: build
           path: build
