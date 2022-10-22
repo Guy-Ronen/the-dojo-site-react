@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Avatar from "./Avatar";
+import Avatar from "../Avatar";
 
 describe("Avatar", () => {
   test('Avatar must have src = "hello-world" and alt = "avatar"', () => {
