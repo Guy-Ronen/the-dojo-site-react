@@ -10,8 +10,8 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password);
-    setEmail('')
-    setPassword('')
+    setEmail("");
+    setPassword("");
   };
   return (
     <form onSubmit={handleSubmit} className="login-form">
@@ -19,7 +19,7 @@ export default function Login() {
       <label>
         <span>Email:</span>
         <input
-          title='email'
+          title="email"
           required
           type="email"
           onChange={(e) => setEmail(e.target.value)}
@@ -29,7 +29,7 @@ export default function Login() {
       <label>
         <span>Password:</span>
         <input
-          title='password'
+          title="password"
           required
           type="password"
           onChange={(e) => setPassword(e.target.value)}
