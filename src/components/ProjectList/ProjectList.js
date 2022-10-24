@@ -6,7 +6,7 @@ import "./ProjectList.css";
 export default function ProjectList({ projects }) {
   return (
     <div className="project-list">
-      {projects.lendth === 0 && <p>No Projects Yet!</p>}
+      {projects.length === 0 && <p>No Projects Yet!</p>}
       {projects.map((project) => (
         <Link to={`/projects/${project.id}`} key={project.id}>
           <h4>{project.name}</h4>
