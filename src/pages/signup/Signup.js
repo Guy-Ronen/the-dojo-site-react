@@ -16,7 +16,6 @@ export default function Create() {
   const handleFileUpload = (e) => {
     setThumbnailError(null);
     let selected = e.target.files[0];
-
     if (!selected) {
       setThumbnailError("Please Select a file");
       return;
@@ -25,8 +24,8 @@ export default function Create() {
       setThumbnailError("Please Select an image");
       return;
     }
-    if (selected.size > 100000) {
-      setThumbnailError("File size must be under 100kb");
+    if (selected.size > 200000) {
+      setThumbnailError("File size must be under 200kb");
       return;
     }
     setThumbnail(selected);
@@ -37,6 +36,10 @@ export default function Create() {
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(email, password, displayName, thumbnail);
+    setEmail("");
+    setPassword("");
+    setDisplayName("");
+    setThumbnail(null);
   };
 
   return (
@@ -45,6 +48,7 @@ export default function Create() {
       <label>
         <span>Email:</span>
         <input
+          title="email"
           required
           type="email"
           onChange={(e) => setEmail(e.target.value)}
@@ -54,6 +58,7 @@ export default function Create() {
       <label>
         <span>Password:</span>
         <input
+          title="password"
           required
           type="password"
           onChange={(e) => setPassword(e.target.value)}
@@ -63,6 +68,7 @@ export default function Create() {
       <label>
         <span>Display Name:</span>
         <input
+          title="displayName"
           required
           type="text"
           onChange={(e) => setDisplayName(e.target.value)}
@@ -71,15 +77,23 @@ export default function Create() {
       </label>
       <label>
         <span>Profile Thumbnail:</span>
-        <input required type="file" onChange={handleFileUpload} />
+        <input
+          title="profileThumbnail"
+          required
+          type="file"
+          onChange={handleFileUpload}
+        />
         {thumbnailError && <div className="error">{thumbnailError}</div>}
       </label>
-      {!isPending && <button className="btn">Sign up</button>}
+
+      {!isPending && <button className="btn">Signup</button>}
+
       {isPending && (
         <button disabled className="btn">
           loading
         </button>
       )}
+
       {error && <div className="error">{error}</div>}
     </form>
   );
