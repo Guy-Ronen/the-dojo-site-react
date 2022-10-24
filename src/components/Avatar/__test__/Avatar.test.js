@@ -8,8 +8,8 @@ describe("Avatar", () => {
     render(<Avatar src={src} />);
 
     const avatar = screen.getByRole("img");
-    
-    expect(avatar).toContainHTML('img')
+
+    expect(avatar).toContainHTML("img");
     expect(avatar).toHaveAttribute("src", "hello-world");
     expect(avatar).toHaveAttribute("alt", "avatar-logo");
   });

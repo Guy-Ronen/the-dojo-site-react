@@ -36,10 +36,10 @@ export default function Create() {
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(email, password, displayName, thumbnail);
-    setEmail("")
-    setPassword("")
-    setDisplayName("")
-    setThumbnail(null)
+    setEmail("");
+    setPassword("");
+    setDisplayName("");
+    setThumbnail(null);
   };
 
   return (
@@ -48,7 +48,7 @@ export default function Create() {
       <label>
         <span>Email:</span>
         <input
-          title='email'
+          title="email"
           required
           type="email"
           onChange={(e) => setEmail(e.target.value)}
@@ -58,7 +58,7 @@ export default function Create() {
       <label>
         <span>Password:</span>
         <input
-          title='password'
+          title="password"
           required
           type="password"
           onChange={(e) => setPassword(e.target.value)}
@@ -68,7 +68,7 @@ export default function Create() {
       <label>
         <span>Display Name:</span>
         <input
-          title='displayName'
+          title="displayName"
           required
           type="text"
           onChange={(e) => setDisplayName(e.target.value)}
@@ -83,14 +83,10 @@ export default function Create() {
           type="file"
           onChange={handleFileUpload}
         />
-        {thumbnailError &&
-          <div className="error">{thumbnailError}</div>
-        }
+        {thumbnailError && <div className="error">{thumbnailError}</div>}
       </label>
 
-      {!isPending &&
-        <button className="btn">Signup</button>
-      }
+      {!isPending && <button className="btn">Signup</button>}
 
       {isPending && (
         <button disabled className="btn">
@@ -98,9 +94,7 @@ export default function Create() {
         </button>
       )}
 
-      {error
-        && <div className="error">{error}</div>
-      }
+      {error && <div className="error">{error}</div>}
     </form>
   );
 }
