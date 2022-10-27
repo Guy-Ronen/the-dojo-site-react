@@ -14,6 +14,7 @@ export default function ProjectComments({ project }) {
     e.preventDefault();
 
     const commentToAdd = {
+      createdBy: user.uid,
       displayName: user.displayName,
       photoURL: user.photoURL,
       content: newComment,
@@ -27,6 +28,12 @@ export default function ProjectComments({ project }) {
       setNewComment("");
     }
   };
+
+  const handleCommentDelete = async (id) => {
+    await updateDocument(project.id, {
+      comments: [...project.comments].filter(comment => comment.id !== id),
+    });
+  }
 
   return (
     <div className="project-comments">
@@ -49,6 +56,9 @@ export default function ProjectComments({ project }) {
               </div>
               <div className="comment-content">
                 <p>{comment.content}</p>
+              </div>
+              <div>
+                {user.uid === comment.createdBy && <button className="delete-comment-btn" onClick={() => handleCommentDelete(comment.id)}>X</button>}
               </div>
             </li>
           ))}
