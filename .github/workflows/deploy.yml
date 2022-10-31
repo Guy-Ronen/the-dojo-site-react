@@ -18,6 +18,8 @@ jobs:
         run: npm ci
       - name: Build Dependencies
         run: npm run-script build
+        env:
+          CI: false
       - name: Archive production artifact
         uses: actions/upload-artifact@master
         with:
