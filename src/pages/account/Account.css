@@ -1,9 +1,24 @@
 /* project summary */
-.project-summary {
+.account-summary {
   background-color: #fff;
   padding: 30px;
   height: 100%;
   border-radius: 4px;
+}
+.account-container {
+  display: flex;
+  justify-content: center;
+}
+
+.account-summary h2 {
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.account-summary h4 {
+  color: var(--text-color);
+  font-size: 0.9em;
+  text-align: center;
 }
 
 .account-image {
@@ -16,10 +31,6 @@
 .account-image img {
   width: 100%;
   height: 100%;
-}
-
-.account-title h3 {
-  text-align: center;
 }
 
 .account-form {

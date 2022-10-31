@@ -1,21 +1,19 @@
 import './Account.css'
-import React, { useState } from 'react'
-import { useAuthContext } from '../../hooks/useAuthContext'
+import { useState } from 'react'
 import { useQoutes } from '../../hooks/useQoutes'
-import { useFirestore } from '../../hooks/useFirestore'
-import { projectFirestore, projectStorage } from '../../firebase/config'
 import { useHistory } from 'react-router-dom'
+import { useUpdate } from '../../hooks/useUpdate'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 export default function Account() {
-  const { user, dispatch } = useAuthContext()
-  const { qoute } = useQoutes()
-  const history = useHistory()
-
-
   const [displayName, setDisplayName] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailError, setThumbnailError] = useState(null);
-  const { updateDocument } = useFirestore('users')
+
+  const { user } = useAuthContext()
+  const { qoute } = useQoutes()
+  const history = useHistory()
+  const { update, isPending, error } = useUpdate()
 
   const handleFileUpload = (e) => {
     setThumbnailError(null);
@@ -39,42 +37,32 @@ export default function Account() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const documentRef = await projectFirestore
-      .collection("users")
-      .doc(user.uid);
-
-    const uploadPath = `thumbnails/${user.uid}/${thumbnail.name}`;
-    const img = await projectStorage.ref(uploadPath).put(thumbnail);
-    const imgUrl = await img.ref.getDownloadURL();
-
-    updateDocument(user.uid, { displayName, photoURL: imgUrl });
-
-    await documentRef.update({ displayName, photoURL: imgUrl });
-    dispatch({ type: "UPDATE", payload: { online: true, displayName, photoURL: imgUrl } });
-
-    await console.log(`Account is now: ${user}`)
+    await update(displayName, thumbnail);
     history.push('/')
+    setDisplayName("");
+    setThumbnail(null);
   };
 
   return (
     <div>
-      <div className="project-summary">
-        <div className='account-image'>
-          <img src={user.photoURL} alt='account-picture' />
+      <div className="account-summary">
+        <div className='account-container'>
+          <div className='account-image'>
+            <img src={user.photoURL} alt='account-picture' />
+          </div>
         </div>
-        <h3 className="acount-title">Display name: {user.displayName}</h3>
-        <p className="details"></p>
-        <h4>{`'${qoute.quote}'`}</h4>
+        <h2 className='display-name'>Display name: {user.displayName}</h2>
+        <h4>{`\`${qoute.quote}\``}</h4>
         <h4>{`${qoute.author}, (${qoute.profession})`}</h4>
 
         <form onSubmit={handleSubmit} className="account-form">
-          <h2>Update Account Details:</h2>
+          <h3>Update Account Details:</h3>
           <label>
             <span>Display Name:</span>
             <input
               title="displayName"
               required
-              placeholder={user.displayName}
+              placeholder={`${user.displayName}...`}
               type="text"
               onChange={(e) => setDisplayName(e.target.value)}
               value={displayName}
@@ -90,7 +78,15 @@ export default function Account() {
             />
             {thumbnailError && <div className="error">{thumbnailError}</div>}
           </label>
-          <button className="btn">Update Profile</button>
+          {!isPending && <button className="btn">Update Account</button>}
+
+          {isPending && (
+            <button disabled className="btn">
+              updating...
+            </button>
+          )}
+
+          {error && <div className="error">{error}</div>}
         </form>
       </div>
     </div>
