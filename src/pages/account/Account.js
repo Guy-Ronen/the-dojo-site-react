@@ -1,19 +1,19 @@
-import './Account.css'
-import { useState } from 'react'
-import { useQoutes } from '../../hooks/useQoutes'
-import { useHistory } from 'react-router-dom'
-import { useUpdate } from '../../hooks/useUpdate'
-import { useAuthContext } from '../../hooks/useAuthContext'
+import "./Account.css";
+import { useState } from "react";
+import { useQoutes } from "../../hooks/useQoutes";
+import { useHistory } from "react-router-dom";
+import { useUpdate } from "../../hooks/useUpdate";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Account() {
   const [displayName, setDisplayName] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailError, setThumbnailError] = useState(null);
 
-  const { user } = useAuthContext()
-  const { qoute } = useQoutes()
-  const history = useHistory()
-  const { update, isPending, error } = useUpdate()
+  const { user } = useAuthContext();
+  const { qoute } = useQoutes();
+  const history = useHistory();
+  const { update, isPending, error } = useUpdate();
 
   const handleFileUpload = (e) => {
     setThumbnailError(null);
@@ -38,7 +38,7 @@ export default function Account() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await update(displayName, thumbnail);
-    history.push('/')
+    history.push("/");
     setDisplayName("");
     setThumbnail(null);
   };
@@ -46,12 +46,12 @@ export default function Account() {
   return (
     <div>
       <div className="account-summary">
-        <div className='account-container'>
-          <div className='account-image'>
-            <img src={user.photoURL} alt='account-picture' />
+        <div className="account-container">
+          <div className="account-image">
+            <img src={user.photoURL} alt="account-picture" />
           </div>
         </div>
-        <h2 className='display-name'>Display name: {user.displayName}</h2>
+        <h2 className="display-name">Display name: {user.displayName}</h2>
         <h4>{`\`${qoute.quote}\``}</h4>
         <h4>{`${qoute.author}, (${qoute.profession})`}</h4>
 
@@ -90,5 +90,5 @@ export default function Account() {
         </form>
       </div>
     </div>
-  )
+  );
 }

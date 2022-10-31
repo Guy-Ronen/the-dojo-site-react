@@ -10,9 +10,9 @@ export default function ProjectComments({ project }) {
 
   const handleCommentDelete = async (id) => {
     await updateDocument(project.id, {
-      comments: [...project.comments].filter(comment => comment.id !== id),
+      comments: [...project.comments].filter((comment) => comment.id !== id),
     });
-  }
+  };
 
   return (
     <div className="project-comments">
@@ -37,7 +37,14 @@ export default function ProjectComments({ project }) {
                 <p>{comment.content}</p>
               </div>
               <div>
-                {user.uid === comment.createdBy && <button className="delete-comment-btn" onClick={() => handleCommentDelete(comment.id)}>X</button>}
+                {user.uid === comment.createdBy && (
+                  <button
+                    className="delete-comment-btn"
+                    onClick={() => handleCommentDelete(comment.id)}
+                  >
+                    X
+                  </button>
+                )}
               </div>
             </li>
           ))}

@@ -8,32 +8,30 @@ export const useUpdate = () => {
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { dispatch } = useAuthContext();
-  const { updateDocument } = useFirestore('users')
+  const { updateDocument } = useFirestore("users");
 
   const update = async (displayName, thumbnail) => {
     setError(null);
     setIsPending(true);
 
     try {
-      const uid = await projectAuth.currentUser.uid
+      const uid = await projectAuth.currentUser.uid;
       const uploadPath = `thumbnails/${uid}/${thumbnail.name}`;
       const img = await projectStorage.ref(uploadPath).put(thumbnail);
       const imgUrl = await img.ref.getDownloadURL();
 
-
-       await projectAuth.currentUser.updateProfile({
+      await projectAuth.currentUser.updateProfile({
         displayName,
-        photoURL: imgUrl
-      })
+        photoURL: imgUrl,
+      });
 
       await updateDocument(uid, {
         displayName,
-        photoURL: imgUrl
+        photoURL: imgUrl,
       });
 
-
       // dispatch login action
-      dispatch({ type: "LOGIN", payload: projectAuth.currentUser })
+      dispatch({ type: "LOGIN", payload: projectAuth.currentUser });
 
       if (!isCancelled) {
         setIsPending(false);
