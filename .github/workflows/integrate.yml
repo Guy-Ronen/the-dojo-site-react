@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: 16
       - name: Changing to app
-        run:  cd app
+        run:  cd app/
       - name: Install dependencies
         run: npm install
       - name: tests
