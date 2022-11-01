@@ -13,6 +13,8 @@ This application is written using the folowing stack:
 
 #### System requirements
 
+- Docker
+- Docker Compose
 - Node 16 (I recommend using `nvm` to support multipul Node.js versions)
 
 #### Installation Instructions
@@ -31,7 +33,7 @@ Now that we know we are running on the right environment, let's sping up the app
 
 #### Developing with the last stable release
 
-`npm run start`
+`docker-compose up`
 
 By now you should be able to open `http://localhost:3000` in your browser to see the application running.
 
