@@ -1,6 +1,6 @@
 name: Format and Test
 
-on: [pull_request]
+on: [push]
 jobs:
   prettier:
     name: Prettier format check
