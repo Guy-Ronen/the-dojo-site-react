@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# The Dojo Site
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my university's frontend module hand-in project for fall semester 2022.
 
-## Available Scripts
+#### Technologies
+This application is written using the folowing stack: 
+- React.js
+- Vanilla Css
+- Firebase Auth
+- Firestore (DB)
 
-In the project directory, you can run:
+#### System requirements
+- Node 16 (I recommend using `nvm` to support multipul Node.js versions)
 
-### `npm start`
+#### Installation Instructions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Before we get started, make sure you are running Node 16: 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+node --version # should output something similar to to v16.x.x
+```
 
-### `npm test`
+In case you are using nvm, switch to the right version by typing the following command.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```nvm use 16```
 
-### `npm run build`
+Now that we know we are running on the right environment, let's sping up the app.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Developing with the last stable release
+`npm run start`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+By now you should be able to open `http://localhost:3000` in your browser to see the application running.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Folder Structure
 
-### `npm run eject`
+To make it easy for new developers to navigate through our codebase, we provided you with a short explanation on why we split our code the way we do.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+In a nutshell, our application is organized as follows.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ 
+``` 
+src/
+     assests/  # All the static assets required
+     components/ # Presentational components
+     pages/ # Page components
+     hooks/ # Custom React Hooks
+     context/ # All of the context funcitonalities
+     firebase/ # Firebaseconfigurations
+ ```
+#### Architecture Overview
+Please click on the diagram below to access the full interactive diagram.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`App Architecture Diagram`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Deployment workflows
 
-## Learn More
+Currently there are 2 github actions pipelines: 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `Integration` - triggred for every PR made to any branch: will handle all the code formatting and testing to make sure everything is unified in the code.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `Deployment` - triggred with every push to master: will handle building the applicaiton in an optimized way and deploying it to the prouction  environment.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
