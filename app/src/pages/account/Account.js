@@ -48,7 +48,7 @@ export default function Account() {
       <div className="account-summary">
         <div className="account-container">
           <div className="account-image">
-            <img src={user.photoURL} alt="account-picture" />
+            <img src={user.photoURL} alt="" />
           </div>
         </div>
         <h2 className="display-name">Display name: {user.displayName}</h2>
