@@ -1137,7 +1137,7 @@ export const useQoutes = () => {
   ];
 
   useEffect(() => {
-    setQoute(qoutes[Math.floor(Math.random() * qoutes.length)]);
+    setQoute(qoutes[Math.floor(Math.random() * qoutes.length)]); // eslint-disable-next-line
   }, []);
   return { qoute };
 };
