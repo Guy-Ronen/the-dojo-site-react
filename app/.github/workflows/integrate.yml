@@ -1,6 +1,9 @@
 name: Format and Test
 
-on: [push]
+on:
+  push:
+    paths: 
+    - 'app'
 jobs:
   prettier:
     name: Prettier format check
