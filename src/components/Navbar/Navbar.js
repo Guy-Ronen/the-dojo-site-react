@@ -9,7 +9,7 @@ export default function Navbar() {
   const { user } = useAuthContext();
   const { logout, isPending } = useLogout();
   return (
-    <div className="navbar">
+    <nav className="navbar">
       <ul>
         <li className="logo">
           <img src={templeLogo} alt="dojo-logo" />
@@ -42,6 +42,6 @@ export default function Navbar() {
           </li>
         )}
       </ul>
-    </div>
+    </nav>
   );
 }
