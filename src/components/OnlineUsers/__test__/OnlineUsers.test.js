@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import OnlineUsers from "../OnlineUsers";
 import { AuthContextProvider } from "../../../context/AuthContext";
@@ -13,8 +13,8 @@ const MockOnlineUsers = () => {
 
 
 describe("Online Users", () => {
-    it('should have render a navbar', () => {
-        render(<MockOnlineUsers />)
+    it('should have render a navbar', async () => {
+        await act(async () => render(<MockOnlineUsers />))
         screen.debug()
     });
 });
