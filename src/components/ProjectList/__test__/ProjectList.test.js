@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Projects from './Projects'
+import { Projects } from '../../../test/testUtils'
 import ProjectList from "../ProjectList";
 
 const MockProjectList = () => {
@@ -26,7 +26,7 @@ describe("ProjectList", () => {
     it('should have render a ProjectList', () => {
         const projectList = render(<MockProjectList />)
         expect(projectList).toBeDefined()
-        
+
     });
 
     it('Should have 2 projects', () => {
@@ -51,7 +51,7 @@ describe("ProjectList", () => {
         const emptyProjectList = render(<EmptyProjectList />)
         const p = emptyProjectList.getByText('No Projects Yet!')
         expect(p).toBeInTheDocument()
-        
+
     });
 });
 

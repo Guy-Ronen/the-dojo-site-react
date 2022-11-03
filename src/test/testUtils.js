@@ -1,8 +1,14 @@
-import { timestamp } from "../../../firebase/config";
+import { timestamp } from "../firebase/config"
 
 const dueDate = new Date()
 
-const Projects = [
+export const user =  {
+    online: true,
+    photoUrl: 'photoUrl',
+    displayName: 'guy9'
+}
+
+export const Projects = [
     {
         id: 'sdkljfhalisdf98y98234y98y23',
         assignedUsersList: [
@@ -54,5 +60,3 @@ const Projects = [
         name: 'Adding a footer'
     }
 ]
-
-export default Projects

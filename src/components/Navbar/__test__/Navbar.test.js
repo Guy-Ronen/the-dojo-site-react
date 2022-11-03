@@ -5,15 +5,10 @@ import "@testing-library/jest-dom";
 import Navbar from "../Navbar";
 import { AuthContextProvider } from "../../../context/AuthContext";
 
-const user = {
-    online: true,
-    photoUrl: 'photoUrl',
-    displayName: 'guy9'
-}
 
 const MockNavbar = () => {
     return (
-        <AuthContextProvider value={user}>
+        <AuthContextProvider>
             <BrowserRouter>
                 <Navbar />
             </BrowserRouter>
