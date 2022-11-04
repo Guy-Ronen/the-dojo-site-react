@@ -3,7 +3,6 @@ import "@testing-library/jest-dom";
 import MockOnlineUsers from "./MockOnlineUsers";
 import { userProps, errorProps } from "../../../test/testUtils";
 
-
 describe("Online Users", () => {
   it("should have render online users", () => {
     render(<MockOnlineUsers props={userProps} />);
