@@ -3,6 +3,7 @@
 This is my university's frontend module hand-in project for fall semester 2022.
 
 [Click here to see it in production](https://the-dojo-site-react.web.app/)
+
 #### Technologies
 
 This application is written using the folowing stack:

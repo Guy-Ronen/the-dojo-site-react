@@ -4,18 +4,16 @@ import OnlineUsers from "../OnlineUsers";
 import { AuthContextProvider } from "../../../context/AuthContext";
 
 const MockOnlineUsers = () => {
-    return (
-        <AuthContextProvider>
-            <OnlineUsers />
-        </AuthContextProvider>
-    );
+  return (
+    <AuthContextProvider>
+      <OnlineUsers />
+    </AuthContextProvider>
+  );
 };
 
-
 describe("Online Users", () => {
-    it('should have render a navbar', async () => {
-        await act(async () => render(<MockOnlineUsers />))
-        screen.debug()
-    });
+  it("should have render a navbar", async () => {
+    await act(async () => render(<MockOnlineUsers />));
+    screen.debug();
+  });
 });
-
