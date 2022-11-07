@@ -70,4 +70,4 @@ Currently there are 2 github actions pipelines:
 
 This diagram shows a general overview of the CICD process: 
 
-![app_cicd_pipeline](./app_cicd_pipeline.png)
+![app_cicd_pipeline](./app_pipeline_cicd.png)
