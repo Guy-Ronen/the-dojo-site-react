@@ -56,9 +56,8 @@ src/
 
 #### Architecture Overview
 
-Please click on the diagram below to access the full interactive diagram.
-
-`App Architecture Diagram`
+In the following diagram you can see the basic flow of the app:
+![app_architecture](./app_architecture.jpeg)
 
 #### Deployment workflows
 
