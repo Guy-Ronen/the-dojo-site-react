@@ -1,8 +1,11 @@
-import { render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import MockProject from "./MockProject";
-import { projectProps, errorProps, noProjectProps } from "../../../test/projectProps";
-
+import {
+  projectProps,
+  errorProps,
+  noProjectProps,
+} from "../../../test/projectProps";
 
 describe("Online Users", () => {
   it("should have render project", () => {
@@ -10,13 +13,13 @@ describe("Online Users", () => {
     screen.debug();
   });
 
-//   it("should have render error", () => {
-//     render(<MockProject props={errorProps} />);
-//     screen.debug();
-//   });
+  //   it("should have render error", () => {
+  //     render(<MockProject props={errorProps} />);
+  //     screen.debug();
+  //   });
 
-//   it("should have render loading", () => {
-//     render(<MockProject props={noProjectProps} />);
-//     screen.debug();
-//   });
+  //   it("should have render loading", () => {
+  //     render(<MockProject props={noProjectProps} />);
+  //     screen.debug();
+  //   });
 });
