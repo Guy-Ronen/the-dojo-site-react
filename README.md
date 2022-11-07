@@ -66,3 +66,8 @@ Currently there are 2 github actions pipelines:
 - `Integration` - triggred for every PR made to any branch: will handle all the code formatting and testing to make sure everything is unified in the code.
 
 - `Deployment` - triggred with every push to master: will handle building the applicaiton in an optimized way and deploying it to the prouction environment.
+
+
+This diagram shows a general overview of the CICD process: 
+
+![app_cicd_pipeline](./app_cicd_pipeline.png)
