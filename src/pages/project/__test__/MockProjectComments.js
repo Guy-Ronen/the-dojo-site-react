@@ -35,28 +35,28 @@ export default function ProjectComments({ props }) {
   };
 
   return (
-    <div className="project-comments">
+    <div>
       <h4>Project Comments</h4>
-      <ul>
+      <ul className="project-comments">
         {props.project.comments.length > 0 &&
-          props.project.comments.map((comment) => (
-            <li key={comment.id}>
-              <div className="comment-author">
+          props.project.comments.map((comment, index) => (
+            <li data-testid={index} key={comment.id}>
+              <div>
                 <Avatar src={comment.photoURL} />
-                <p>{comment.displayName}</p>
+                <p className="comment-author">{comment.displayName}</p>
               </div>
               <div className="comment-date">
                 <p>
-                  {formatDistanceToNow(props.comment.createdAt.toDate(), {
+                  {formatDistanceToNow(comment.createdAt.toDate(), {
                     addSuffix: true,
                   })}
                 </p>
               </div>
               <div className="comment-content">
-                <p>{props.comment.content}</p>
+                <p>{comment.content}</p>
               </div>
               <div>
-                {props.user.uid === props.comment.createdBy && (
+                {props.user.uid === comment.createdBy && (
                   <button
                     className="delete-comment-btn"
                     onClick={() => handleCommentDelete(props.comment.id)}
