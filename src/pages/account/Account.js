@@ -4,7 +4,7 @@ import { useQoutes } from "../../hooks/useQoutes";
 import { useHistory } from "react-router-dom";
 import { useUpdate } from "../../hooks/useUpdate";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useUploadThumbnail } from "../../hooks/useHandleFileUpload";
+import { useUploadThumbnail } from "../../hooks/useUploadThumbnail";
 
 export default function Account() {
   const [displayName, setDisplayName] = useState("");
