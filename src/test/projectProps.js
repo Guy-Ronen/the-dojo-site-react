@@ -16,7 +16,7 @@ export const projectProps = {
   user: {
     displayName: "guy1",
     uid: "kdjfhalksdfnaklsdfjn",
-    photoUrl: "photoUrl",
+    photoURL: "photoURL",
   },
 
   project: {

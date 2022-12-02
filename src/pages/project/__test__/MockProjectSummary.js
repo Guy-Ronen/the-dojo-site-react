@@ -16,7 +16,7 @@ export default function ProjectSummary({ props }) {
     <div>
       <div className="project-summary">
         <h2 className="page-title">{props.project.name}</h2>
-        <p>Project created by: {props.project.createdBy.displayName}</p>
+        <p className="created-by">Project created by: {props.project.createdBy.displayName}</p>
         <p className="due-date">
           Project due by: {props.project.dueDate.toDate().toDateString()}
         </p>
@@ -24,7 +24,7 @@ export default function ProjectSummary({ props }) {
         <h4>Project is assigned to:</h4>
         <div className="assigned-users">
           {props.project.assignedUsersList.map((user) => (
-            <div key={user.id}>
+            <div className="assinged-user" key={user.id}>
               <Avatar src={user.photoURL} />
             </div>
           ))}

@@ -1,33 +1,42 @@
 import Avatar from "../../../components/Avatar/Avatar";
 import { useState } from "react";
-import { useFirestore } from "../../../hooks/useFirestore";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { timestamp } from "../../../firebase/config";
 
 export default function ProjectComments({ props }) {
   const [newComment, setNewComment] = useState("");
-  const { updateDocument, response } = useFirestore("projects");
+
+  const updateDocument = async (updates) => {
+    try {
+      const currentDoc = props.project;
+      for (const [key, value] of Object.entries(updates)) {
+        currentDoc[key] = value;
+      }
+      return currentDoc;
+    } catch (err) {
+      return null;
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const commentToAdd = {
-      createdBy: user.uid,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
+      createdBy: props.user.uid,
+      displayName: props.user.displayName,
+      photoURL: props.user.photoURL,
       content: newComment,
       createdAt: timestamp.fromDate(new Date()),
       id: Math.random(),
     };
-    await updateDocument(props.project.id, {
+    await updateDocument({
       comments: [...props.project.comments, commentToAdd],
     });
-    if (!response.error) {
-      setNewComment("");
-    }
+    setNewComment("");
   };
 
   const handleCommentDelete = async (id) => {
-    await updateDocument(props.project.id, {
+    await updateDocument({
       comments: [...props.project.comments].filter(
         (comment) => comment.id !== id
       ),
@@ -40,7 +49,11 @@ export default function ProjectComments({ props }) {
       <ul className="project-comments">
         {props.project.comments.length > 0 &&
           props.project.comments.map((comment, index) => (
-            <li data-testid={index} key={comment.id}>
+            <li
+              className="project-comment"
+              data-testid={index}
+              key={comment.id}
+            >
               <div>
                 <Avatar src={comment.photoURL} />
                 <p className="comment-author">{comment.displayName}</p>
@@ -59,7 +72,7 @@ export default function ProjectComments({ props }) {
                 {props.user.uid === comment.createdBy && (
                   <button
                     className="delete-comment-btn"
-                    onClick={() => handleCommentDelete(props.comment.id)}
+                    onClick={() => handleCommentDelete(comment.id)}
                   >
                     X
                   </button>
