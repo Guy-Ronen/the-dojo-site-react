@@ -4,34 +4,14 @@ import { useState } from "react";
 
 // hooks
 import { useSignup } from "../../hooks/useSignup";
+import { useUploadThumbnail } from "../../hooks/useHandleFileUpload";
 
 export default function Create() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [thumbnail, setThumbnail] = useState(null);
-  const [thumbnailError, setThumbnailError] = useState(null);
   const { signup, isPending, error } = useSignup();
-
-  const handleFileUpload = (e) => {
-    setThumbnailError(null);
-    let selected = e.target.files[0];
-    if (!selected) {
-      setThumbnailError("Please Select a file");
-      return;
-    }
-    if (!selected.type.includes("image")) {
-      setThumbnailError("Please Select an image");
-      return;
-    }
-    if (selected.size > 200000) {
-      setThumbnailError("File size must be under 200kb");
-      return;
-    }
-    setThumbnail(selected);
-    console.log("thumbnail updated");
-    setThumbnailError(null);
-  };
+  const { thumbnail, thumbnailError, handleFileUpload } = useUploadThumbnail();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +19,6 @@ export default function Create() {
     setEmail("");
     setPassword("");
     setDisplayName("");
-    setThumbnail(null);
   };
 
   return (
