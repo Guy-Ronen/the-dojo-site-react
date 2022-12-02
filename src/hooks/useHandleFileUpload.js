@@ -1,10 +1,9 @@
 import { useState } from "react";
 
 export const useUploadThumbnail = () => {
+  const [thumbnail, setThumbnail] = useState(null);
+  const [thumbnailError, setThumbnailError] = useState(null);
   const handleFileUpload = (e) => {
-    const [thumbnail, setThumbnail] = useState(null);
-    const [thumbnailError, setThumbnailError] = useState(null);
-
     setThumbnailError(null);
     let selected = e.target.files[0];
     if (!selected) {
@@ -23,5 +22,5 @@ export const useUploadThumbnail = () => {
     console.log("thumbnail updated");
     setThumbnailError(null);
   };
-  return { handleFileUpload };
+  return { handleFileUpload, thumbnail, thumbnailError };
 };
