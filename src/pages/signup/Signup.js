@@ -4,7 +4,7 @@ import { useState } from "react";
 
 // hooks
 import { useSignup } from "../../hooks/useSignup";
-import { useUploadThumbnail } from "../../hooks/useHandleFileUpload";
+import { useUploadThumbnail } from "../../hooks/useUploadThumbnail";
 
 export default function Create() {
   const [email, setEmail] = useState("");
