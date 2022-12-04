@@ -4,7 +4,6 @@ import Select from "react-select";
 import "./Create.css";
 import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useFirestore } from "../../hooks/useFirestore";
 import { useHistory } from "react-router-dom";
 import { useAddDocument } from "../../hooks/useAddDocument";
 
