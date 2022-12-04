@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { projectAuth, projectStorage } from "../firebase/config";
 import { useAuthContext } from "./useAuthContext";
-import { useFirestore } from "./useFirestore";
+import { useUpdateDocument } from "./useUpdateDocuments";
 
 export const useUpdate = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { dispatch } = useAuthContext();
-  const { updateDocument } = useFirestore("users");
+  const { updateDocument } = useUpdateDocument("users");
 
   const update = async (displayName, thumbnail) => {
     setError(null);
