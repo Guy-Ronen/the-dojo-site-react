@@ -1,9 +1,9 @@
 import Avatar from "../../../components/Avatar/Avatar";
-import { useFirestore } from "../../../hooks/useFirestore";
 import { useHistory } from "react-router-dom";
+import { useDeleteDocument } from "../../../hooks/useDeleteDocument";
 
 export default function ProjectSummary({ props }) {
-  const { deleteDocument } = useFirestore("projects");
+  const { deleteDocument } = useDeleteDocument("projects");
   const history = useHistory();
 
   const handleClick = (e) => {
