@@ -6,6 +6,7 @@ import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useHistory } from "react-router-dom";
+import { useAddDocument } from "../../hooks/useAddDocument";
 
 const categories = [
   { value: "development", label: "Development" },
@@ -19,7 +20,7 @@ export default function Create() {
   const history = useHistory();
   const [users, setUsers] = useState([]);
   const { user } = useAuthContext();
-  const { addDocument, response } = useFirestore("projects");
+  const {addDocument, response} = useAddDocument('projects')
 
   // Form field inputs:
 
