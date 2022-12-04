@@ -14,7 +14,13 @@ const MockSidebarTest = () => {
 
 describe("MockSidebar", () => {
   it("should have render a MockSidebar", () => {
-    const MockSidebar = render(<MockSidebarTest />);
-    screen.debug();
+    const { container } = render(<MockSidebarTest />);
+    expect(container).toBeInTheDocument();
+  });
+
+  it("should have 3 links", () => {
+    const { container } = render(<MockSidebarTest />);
+    const links = container.getElementsByClassName("list-item");
+    expect(links).toHaveLength(3);
   });
 });
