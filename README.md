@@ -68,7 +68,6 @@ Currently there are 2 github actions pipelines:
 
 - `Deployment` - triggred with every push to master: will handle building the applicaiton in an optimized way and deploying it to the prouction environment.
 
-
-This diagram shows a general overview of the CICD process: 
+This diagram shows a general overview of the CICD process:
 
 ![app_cicd_pipeline](./app_pipeline_cicd.png)
