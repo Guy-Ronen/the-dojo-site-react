@@ -1,4 +1,3 @@
-import { useAuthContext } from "../../hooks/useAuthContext";
 import CommentsForm from "./CommentsForm";
 import Comment from "./Comment";
 
