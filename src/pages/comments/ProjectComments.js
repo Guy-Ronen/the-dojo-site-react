@@ -1,12 +1,12 @@
 import Avatar from "../../components/Avatar/Avatar";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useFirestore } from "../../hooks/useFirestore";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import CommentsForm from "./CommentsForm";
+import { useUpdateDocument } from "../../hooks/useUpdateDocuments";
 
 export default function ProjectComments({ project }) {
   const { user } = useAuthContext();
-  const { updateDocument } = useFirestore("projects");
+  const { updateDocument } = useUpdateDocument("projects");
 
   const handleCommentDelete = async (id) => {
     await updateDocument(project.id, {
