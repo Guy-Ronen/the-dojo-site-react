@@ -16,7 +16,9 @@ export default function ProjectSummary({ props }) {
     <div>
       <div className="project-summary">
         <h2 className="page-title">{props.project.name}</h2>
-        <p className="created-by">Project created by: {props.project.createdBy.displayName}</p>
+        <p className="created-by">
+          Project created by: {props.project.createdBy.displayName}
+        </p>
         <p className="due-date">
           Project due by: {props.project.dueDate.toDate().toDateString()}
         </p>

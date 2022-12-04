@@ -140,35 +140,34 @@ describe("Project comments", () => {
       expect(addNewCommentButton).toBeInTheDocument();
     });
 
-// Adding new comment
-it("should add a new comment to the list that can be deleted", async () => {
-  const { container } = render(<MockProject props={projectProps} />);
-  const newCommentTextbox = screen.getByRole("textbox", {
-    name: /add new comment:/i,
-  });
-  const addNewCommentButton = screen.getByRole("button", {
-    name: /add comment/i,
-  });
-  await fireEvent.change(newCommentTextbox, {
-    target: { value: "this is a third comment" },
-  });
-  await fireEvent.click(addNewCommentButton);
+    // Adding new comment
+    it("should add a new comment to the list that can be deleted", async () => {
+      const { container } = render(<MockProject props={projectProps} />);
+      const newCommentTextbox = screen.getByRole("textbox", {
+        name: /add new comment:/i,
+      });
+      const addNewCommentButton = screen.getByRole("button", {
+        name: /add comment/i,
+      });
+      await fireEvent.change(newCommentTextbox, {
+        target: { value: "this is a third comment" },
+      });
+      await fireEvent.click(addNewCommentButton);
 
-  // Should have three comments
-  const projectComments =
-    container.getElementsByClassName("project-comment");
-  expect(projectComments).toHaveLength(3);
+      // Should have three comments
+      const projectComments =
+        container.getElementsByClassName("project-comment");
+      expect(projectComments).toHaveLength(3);
 
-  // Should have a delete button as created by user
-  const thirdComment = screen.getAllByTestId(2);
-  let deleteButton =
-    thirdComment[0].getElementsByClassName("delete-comment-btn")[0];
-  expect(deleteButton).toBeInTheDocument();
-  expect(deleteButton).toContainHTML(
-    '<button class="delete-comment-btn">X</button>'
-  );
-  expect(deleteButton).toHaveTextContent("X");
-});
-
-});
+      // Should have a delete button as created by user
+      const thirdComment = screen.getAllByTestId(2);
+      let deleteButton =
+        thirdComment[0].getElementsByClassName("delete-comment-btn")[0];
+      expect(deleteButton).toBeInTheDocument();
+      expect(deleteButton).toContainHTML(
+        '<button class="delete-comment-btn">X</button>'
+      );
+      expect(deleteButton).toHaveTextContent("X");
+    });
+  });
 });

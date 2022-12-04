@@ -1,6 +1,6 @@
 import { timestamp } from "../firebase/config";
 const dueDate = new Date("2023-1-1");
-const commentDueDate = new Date()
+const commentDueDate = new Date();
 
 export const errorProps = {
   project: null,
