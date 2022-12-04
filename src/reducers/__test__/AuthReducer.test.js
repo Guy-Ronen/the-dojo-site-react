@@ -1,10 +1,7 @@
 import { authReducer } from "../AuthReducer";
-
 describe("AuthReducer testing", () => {
-
   // LOGIN
   it("should login user properly", () => {
-
     // creating the current state of the app (no one logged in)
     const initialState = {
       user: null,
@@ -28,7 +25,6 @@ describe("AuthReducer testing", () => {
 
   // LOGOUT
   it("should logout user properly", () => {
-
     // creating a logged-in user
     const currentUser = {
       user: {
@@ -47,7 +43,6 @@ describe("AuthReducer testing", () => {
 
   // UPDATE
   it("should update user properly", () => {
-
     // creating the current state of the user
     const userBeforeUpdating = {
       user: {
@@ -75,7 +70,6 @@ describe("AuthReducer testing", () => {
 
   // AUTH IS READY
   it("should dispatch that authentication is ready", () => {
-    
     // user we want to dispatch as login
     const userBeforeAuthIsReady = {
       user: {
