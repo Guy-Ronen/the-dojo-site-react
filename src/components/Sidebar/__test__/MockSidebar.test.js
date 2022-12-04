@@ -23,4 +23,28 @@ describe("MockSidebar", () => {
     const links = container.getElementsByClassName("list-item");
     expect(links).toHaveLength(3);
   });
+
+  it("should have an account link", () => {
+    render(<MockSidebarTest />);
+    const accountLink = screen.getByText(/account/i);
+
+    expect(accountLink).toBeInTheDocument();
+    expect(accountLink.closest("img")).toHaveAttribute("alt", "/user-icon");
+  });
+
+  it("should have a dashboard link", () => {
+    render(<MockSidebarTest />);
+    const dashboardLink = screen.getByText(/dashboard/i);
+
+    expect(dashboardLink).toBeInTheDocument();
+    expect(dashboardLink.closest("a")).toHaveAttribute("href", "/");
+  });
+
+  it("should have an 'add project' link", () => {
+    render(<MockSidebarTest />);
+    const addProjectLink = screen.getByText(/add project/i);
+
+    expect(addProjectLink).toBeInTheDocument();
+    expect(addProjectLink.closest("a")).toHaveAttribute("href", "/create");
+  });
 });
