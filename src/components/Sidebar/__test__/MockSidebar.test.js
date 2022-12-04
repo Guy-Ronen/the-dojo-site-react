@@ -29,7 +29,7 @@ describe("MockSidebar", () => {
     const accountLink = screen.getByText(/account/i);
 
     expect(accountLink).toBeInTheDocument();
-    expect(accountLink.closest("img")).toHaveAttribute("alt", "/user-icon");
+    expect(accountLink.closest("a")).toHaveAttribute("href", "/account");
   });
 
   it("should have a dashboard link", () => {
