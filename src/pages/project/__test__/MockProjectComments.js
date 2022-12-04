@@ -1,11 +1,11 @@
 import Avatar from "../../../components/Avatar/Avatar";
 import { useState } from "react";
-import { useFirestore } from "../../../hooks/useFirestore";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { useUpdateDocument } from "../../../hooks/useUpdateDocuments";
 
 export default function ProjectComments({ props }) {
   const [newComment, setNewComment] = useState("");
-  const { updateDocument, response } = useFirestore("projects");
+  const { updateDocument, response } = useUpdateDocument("projects");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
