@@ -1,33 +1,42 @@
 import Avatar from "../../../components/Avatar/Avatar";
 import { useState } from "react";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import { useUpdateDocument } from "../../../hooks/useUpdateDocuments";
+import { timestamp } from "../../../firebase/config";
 
 export default function ProjectComments({ props }) {
   const [newComment, setNewComment] = useState("");
-  const { updateDocument, response } = useUpdateDocument("projects");
+
+  const updateDocument = async (updates) => {
+    try {
+      const currentDoc = props.project;
+      for (const [key, value] of Object.entries(updates)) {
+        currentDoc[key] = value;
+      }
+      return currentDoc;
+    } catch (err) {
+      return null;
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const commentToAdd = {
-      createdBy: user.uid,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
+      createdBy: props.user.uid,
+      displayName: props.user.displayName,
+      photoURL: props.user.photoURL,
       content: newComment,
       createdAt: timestamp.fromDate(new Date()),
       id: Math.random(),
     };
-    await updateDocument(props.project.id, {
+    await updateDocument({
       comments: [...props.project.comments, commentToAdd],
     });
-    if (!response.error) {
-      setNewComment("");
-    }
+    setNewComment("");
   };
 
   const handleCommentDelete = async (id) => {
-    await updateDocument(props.project.id, {
+    await updateDocument({
       comments: [...props.project.comments].filter(
         (comment) => comment.id !== id
       ),
@@ -35,31 +44,35 @@ export default function ProjectComments({ props }) {
   };
 
   return (
-    <div className="project-comments">
+    <div>
       <h4>Project Comments</h4>
-      <ul>
+      <ul className="project-comments">
         {props.project.comments.length > 0 &&
-          props.project.comments.map((comment) => (
-            <li key={comment.id}>
-              <div className="comment-author">
+          props.project.comments.map((comment, index) => (
+            <li
+              className="project-comment"
+              data-testid={index}
+              key={comment.id}
+            >
+              <div>
                 <Avatar src={comment.photoURL} />
-                <p>{comment.displayName}</p>
+                <p className="comment-author">{comment.displayName}</p>
               </div>
               <div className="comment-date">
                 <p>
-                  {formatDistanceToNow(props.comment.createdAt.toDate(), {
+                  {formatDistanceToNow(comment.createdAt.toDate(), {
                     addSuffix: true,
                   })}
                 </p>
               </div>
               <div className="comment-content">
-                <p>{props.comment.content}</p>
+                <p>{comment.content}</p>
               </div>
               <div>
-                {props.user.uid === props.comment.createdBy && (
+                {props.user.uid === comment.createdBy && (
                   <button
                     className="delete-comment-btn"
-                    onClick={() => handleCommentDelete(props.comment.id)}
+                    onClick={() => handleCommentDelete(comment.id)}
                   >
                     X
                   </button>
