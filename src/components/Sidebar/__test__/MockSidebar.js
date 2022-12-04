@@ -7,7 +7,6 @@ import AccountIcon from "../icons/AccountIcon";
 import AddProjectIcon from "../icons/AddProjectIcon";
 import DashboardIcon from "../icons/DashboardIcon";
 
-
 export default function MockSidebar({ mockUser }) {
   return (
     <div className="sidebar">

@@ -1,6 +1,6 @@
 import { useReducer, useEffect, useState } from "react";
 import { projectFirestore, timestamp } from "../firebase/config";
-import {firestoreReducer} from '../reducers/FirestroreReducer';
+import { firestoreReducer } from "../reducers/FirestroreReducer";
 
 let initialState = {
   document: null,
@@ -8,7 +8,6 @@ let initialState = {
   error: null,
   success: null,
 };
-
 
 export const useFirestore = (collection) => {
   const [response, dispatch] = useReducer(firestoreReducer, initialState);

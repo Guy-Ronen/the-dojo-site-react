@@ -19,7 +19,7 @@ export default function Create() {
   const history = useHistory();
   const [users, setUsers] = useState([]);
   const { user } = useAuthContext();
-  const {addDocument, response} = useAddDocument('projects')
+  const { addDocument, response } = useAddDocument("projects");
 
   // Form field inputs:
 

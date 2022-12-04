@@ -29,7 +29,6 @@ export const useAddDocument = (collection) => {
         type: "ADDED_DOCUMENT",
         payload: addedDocument,
       });
-
     } catch (err) {
       dispatchIfNotCancelled(dispatch, isCancelled, {
         type: "ERROR",
