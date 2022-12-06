@@ -2,7 +2,7 @@ import "./Account.css";
 import { useState } from "react";
 import { useQoutes } from "../../hooks/useQoutes";
 import { useHistory } from "react-router-dom";
-import { useUpdate } from "../../hooks/useUpdate";
+import { useUpdateAccount } from "../../hooks/useUpdateAccount";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useUploadThumbnail } from "../../hooks/useUploadThumbnail";
 
@@ -13,11 +13,11 @@ export default function Account() {
   const { user } = useAuthContext();
   const { qoute } = useQoutes();
   const history = useHistory();
-  const { update, isPending, error } = useUpdate();
+  const { updateAccount, isPending, error } = useUpdateAccount();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await update(displayName, thumbnail);
+    await updateAccount(displayName, thumbnail);
     history.push("/");
     setDisplayName("");
   };
