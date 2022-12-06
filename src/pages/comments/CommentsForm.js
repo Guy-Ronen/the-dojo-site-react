@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useUpdateDocument } from "../../hooks/useUpdateDocuments";
+import { useUpdateDocument } from "../../hooks/useUpdateDocument";
 
 export default function CommentsForm({ project }) {
   const { user } = useAuthContext();
