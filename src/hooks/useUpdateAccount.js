@@ -3,14 +3,14 @@ import { projectAuth, projectStorage } from "../firebase/config";
 import { useAuthContext } from "./useAuthContext";
 import { useUpdateDocument } from "./useUpdateDocuments";
 
-export const useUpdate = () => {
+export const useUpdateAccount = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { dispatch } = useAuthContext();
   const { updateDocument } = useUpdateDocument("users");
 
-  const update = async (displayName, thumbnail) => {
+  const updateAccount = async (displayName, thumbnail) => {
     setError(null);
     setIsPending(true);
 
@@ -49,5 +49,5 @@ export const useUpdate = () => {
     return () => setIsCancelled(true);
   }, []);
 
-  return { update, isPending, error };
+  return { updateAccount, isPending, error };
 };
