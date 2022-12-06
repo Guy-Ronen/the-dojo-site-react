@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { projectAuth, projectStorage } from "../firebase/config";
 import { useAuthContext } from "./useAuthContext";
-import { useUpdateDocument } from "./useUpdateDocuments";
+import { useUpdateDocument } from "./useUpdateDocument";
 
 export const useUpdateAccount = () => {
   const [isCancelled, setIsCancelled] = useState(false);
