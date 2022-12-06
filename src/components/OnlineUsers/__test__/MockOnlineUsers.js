@@ -1,6 +1,6 @@
 import "../OnlineUsers.css";
 import Avatar from "../../Avatar/Avatar";
-import OnlineIcon from "../../OnlineIcon/OnlineIcon";
+import IsOnlineIcon from "../../IsOnlineIcon/IsOnlineIcon";
 
 export default function MockOnlineUsers({ props }) {
   return (
@@ -10,7 +10,7 @@ export default function MockOnlineUsers({ props }) {
       {props.users &&
         props.users.map((user) => (
           <div key={user.id} className="user-list-item">
-            <OnlineIcon isOnline={user.online} />
+            <IsOnlineIcon isOnline={user.online} />
             <span>{user.displayName}</span>
             <Avatar src={user.photoURL} />
           </div>

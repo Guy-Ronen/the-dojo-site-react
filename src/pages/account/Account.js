@@ -2,45 +2,24 @@ import "./Account.css";
 import { useState } from "react";
 import { useQoutes } from "../../hooks/useQoutes";
 import { useHistory } from "react-router-dom";
-import { useUpdate } from "../../hooks/useUpdate";
+import { useUpdateAccount } from "../../hooks/useUpdateAccount";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useUploadThumbnail } from "../../hooks/useUploadThumbnail";
 
 export default function Account() {
   const [displayName, setDisplayName] = useState("");
-  const [thumbnail, setThumbnail] = useState(null);
-  const [thumbnailError, setThumbnailError] = useState(null);
+  const { thumbnail, thumbnailError, handleFileUpload } = useUploadThumbnail();
 
   const { user } = useAuthContext();
   const { qoute } = useQoutes();
   const history = useHistory();
-  const { update, isPending, error } = useUpdate();
-
-  const handleFileUpload = (e) => {
-    setThumbnailError(null);
-    let selected = e.target.files[0];
-    if (!selected) {
-      setThumbnailError("Please Select a file");
-      return;
-    }
-    if (!selected.type.includes("image")) {
-      setThumbnailError("Please Select an image");
-      return;
-    }
-    if (selected.size > 200000) {
-      setThumbnailError("File size must be under 200kb");
-      return;
-    }
-    setThumbnail(selected);
-    console.log("thumbnail updated");
-    setThumbnailError(null);
-  };
+  const { updateAccount, isPending, error } = useUpdateAccount();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await update(displayName, thumbnail);
+    await updateAccount(displayName, thumbnail);
     history.push("/");
     setDisplayName("");
-    setThumbnail(null);
   };
 
   return (

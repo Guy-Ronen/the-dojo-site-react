@@ -1,7 +1,7 @@
 import React from "react";
-import "./OnlineIcon.css";
+import "./IsOnlineIcon.css";
 
-export default function OnlineIcon({ isOnline }) {
+export default function IsOnlineIcon({ isOnline }) {
   return (
     <div>
       {isOnline && (

@@ -2,7 +2,7 @@ import MockProjectSummary from "./MockProjectSummary";
 import MockProjectComments from "./MockProjectComments";
 import "../Project.css";
 
-export default function Project({ props }) {
+export default function MockProject({ props }) {
   if (props.error) {
     return <div className="error">{props.error}</div>;
   }
