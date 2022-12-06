@@ -1,5 +1,5 @@
 import React from "react";
-import { useUpdateDocument } from "../../hooks/useUpdateDocuments";
+import { useUpdateDocument } from "../../hooks/useUpdateDocument";
 
 export default function DeleteCommentButton({ project, comment }) {
   const { updateDocument } = useUpdateDocument("projects");
